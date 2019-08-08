@@ -15,7 +15,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 const persistConfig = {
   key: "marvelFightClub",
-  storage
+  storage,
+  blacklist: ["router"]
 };
 
 const persistedReducer = persistReducer(
