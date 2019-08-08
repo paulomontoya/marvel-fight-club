@@ -1,6 +1,7 @@
 import { put } from "redux-saga/effects";
 import { battlelogTypes } from "../actions/battlelog";
 import moment from "moment";
+import { history } from "../store";
 
 export function* battlelogSaga({ payload }) {
   for (let i = 1; i <= payload.roundsAmount; i++) {
@@ -16,4 +17,6 @@ export function* battlelogSaga({ payload }) {
       }
     });
   }
+
+  yield history.push("/battlelog");
 }
