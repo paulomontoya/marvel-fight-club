@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import * as CharactersActions from "../actions/characters";
 import LoadingSpinner from "../components/LoadingSpinner";
 import BattlelogItem from "../components/BattlelogItem";
+import Leaderboard from "../components/Leaderboard";
 
 const BattlelogPage = ({
   charactersStore,
@@ -22,10 +23,13 @@ const BattlelogPage = ({
       {charactersStore.list.length === 0 ? (
         <LoadingSpinner />
       ) : (
-        battlelogStore.list.length > 0 &&
-        battlelogStore.list.map((battle, index) => {
-          return <BattlelogItem battle={battle} key={index} />;
-        })
+        <>
+          <Leaderboard list={battlelogStore.list} />
+          {battlelogStore.list.length > 0 &&
+            battlelogStore.list.map((battle, index) => {
+              return <BattlelogItem battle={battle} key={index} />;
+            })}
+        </>
       )}
     </div>
   );
