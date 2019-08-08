@@ -1,23 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./CharactersPage.module.scss";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as CharactersActions from "../actions/characters";
 import CharacterCard from "../components/CharacterCard";
+import LoadingSpinner from "../components/LoadingSpinner";
 
-const CharactersPage = props => {
+const CharactersPage = ({ charactersStore, fetchCharacterList }) => {
+  useEffect(() => {
+    fetchCharacterList();
+  }, []);
+
   return (
     <div className={css.CharactersPage}>
       <div className={css.CharactersList}>
-        <CharacterCard
-          title="Thanos"
-          image={
-            "http://i.annihil.us/u/prod/marvel/i/mg/6/40/5274137e3e2cd.jpg"
-          }
-          description={
-            "The Mad Titan Thanos, a melancholy, brooding individual, consumed with the concept of death, sought out personal power and increased strength, endowing himself with cybernetic implants until he became more powerful than any of his brethren."
-          }
-        />
+        {charactersStore.isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          charactersStore.list.map((character, index) => {
+            return (
+              <CharacterCard
+                title={character.name}
+                image={`${character.thumbnail.path}.${
+                  character.thumbnail.extension
+                }`}
+                description={character.description}
+                key={index}
+              />
+            );
+          })
+        )}
       </div>
     </div>
   );
