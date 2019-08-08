@@ -1,0 +1,47 @@
+.BattlelogItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 440px;
+  margin: 10px auto;
+}
+
+.BattlelogItemWinner,
+.BattlelogItemLoser {
+  flex-shrink: 1;
+  flex-grow: 0;
+  position: relative;
+
+  img {
+    width: 90px;
+    height: 90px;
+  }
+  > svg {
+    position: absolute;
+    top: 70px;
+    width: 24px;
+  }
+  > span {
+    display: block;
+    font-size: 0.7rem;
+    width: 90px;
+  }
+}
+
+.BattlelogItemWinner {
+  > svg {
+    left: 77px;
+  }
+}
+.BattlelogItemLoser {
+  text-align: right;
+  > svg {
+    right: 77px;
+  }
+}
+.BattlelogItemTimestamp {
+  flex-grow: 1;
+  margin: 0 20px;
+  text-align: center;
+  font-size: 0.8rem;
+}
