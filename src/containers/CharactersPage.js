@@ -8,8 +8,6 @@ import CharacterCard from "../components/CharacterCard";
 const CharactersPage = props => {
   return (
     <div className={css.CharactersPage}>
-      <h1>Characters</h1>
-
       <div className={css.CharactersList}>
         <CharacterCard
           title="Thanos"
