@@ -8,7 +8,7 @@
 
   > article {
     display: grid;
-    width: 330px;
+    max-width: 330px;
     grid-template-columns: 1fr 30px 1fr;
     margin: 0 auto;
     align-items: center;
