@@ -16,6 +16,8 @@ const CharacterCard = ({ title, image, description, handlePickCard }) => {
       className={css.CharacterCard}
       onMouseMove={() => toggle(true)}
       onMouseLeave={() => toggle(false)}
+      onTouchStart={() => toggle(true)}
+      onTouchEnd={() => toggle(false)}
       style={{
         backgroundImage: `url(${image})`,
         transform: scale.interpolate(s => `scale(${s})`)

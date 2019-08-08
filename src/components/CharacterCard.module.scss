@@ -80,6 +80,8 @@
   font-weight: 900;
   border-radius: 50%;
   transition: 0.2s transform;
+  text-align: center;
+  padding: 0;
 
   &:hover {
     transform: scale(1.1);
