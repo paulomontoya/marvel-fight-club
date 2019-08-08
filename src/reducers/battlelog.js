@@ -2,11 +2,11 @@ import { battlelogTypes } from "../actions/battlelog";
 
 const INITIAL_STATE = {
   list: [
-    {
-      // winner: "",
-      // loser: "",
-      // timestamp: ""
-    }
+    // {
+    // winner: "",
+    // loser: "",
+    // timestamp: ""
+    // }
   ]
 };
 
@@ -21,12 +21,12 @@ export default function(state = INITIAL_STATE, action) {
       return {
         ...state,
         list: [
-          ...state.list,
           {
             winner: action.payload.winner,
             loser: action.payload.loser,
             timestamp: action.payload.timestamp
-          }
+          },
+          ...state.list
         ]
       };
 

@@ -7,6 +7,7 @@ import { store, persistor, history } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
 import Header from "./components/Header";
 import BattlePage from "./containers/BattlePage";
+import BattlelogPage from "./containers/BattlelogPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Switch>
             <Route path="/" exact={true} component={CharactersPage} />
             <Route path="/battle" component={BattlePage} />
+            <Route path="/battlelog" component={BattlelogPage} />
             <Route
               component={() => <div style={{ textAlign: "center" }}>404!</div>}
             />
