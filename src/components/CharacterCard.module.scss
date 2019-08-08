@@ -12,6 +12,7 @@
   color: #fff;
   overflow: hidden;
   flex-shrink: 0;
+  user-select: none;
 
   &::before {
     content: "";
