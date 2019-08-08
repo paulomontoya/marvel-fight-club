@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as UserActions from "../actions/user";
 import * as CharactersActions from "../actions/characters";
+import * as BattlelogActions from "../actions/battlelog";
 import CharacterCard from "../components/CharacterCard";
 import LoadingSpinner from "../components/LoadingSpinner";
 
@@ -11,7 +12,8 @@ const BattlePage = ({
   userStore,
   charactersStore,
   pickCharacter,
-  fetchCharacterList
+  fetchCharacterList,
+  fight
 }) => {
   useEffect(() => {
     if (charactersStore.list.length === 0) {
@@ -35,7 +37,11 @@ const BattlePage = ({
 
   const onSubmitBattle = event => {
     event.preventDefault();
-    console.log("rounds", event.target.rounds.value);
+    fight(
+      event.target.rounds.value,
+      charactersPicked["A"],
+      charactersPicked["B"]
+    );
   };
 
   return (
@@ -79,11 +85,15 @@ const BattlePage = ({
 
 const mapStateToProps = state => ({
   userStore: state.user,
-  charactersStore: state.characters
+  charactersStore: state.characters,
+  battlelogStore: state.battlelog
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ ...UserActions, ...CharactersActions }, dispatch);
+  bindActionCreators(
+    { ...UserActions, ...CharactersActions, ...BattlelogActions },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,
