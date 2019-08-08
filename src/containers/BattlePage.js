@@ -7,6 +7,7 @@ import * as CharactersActions from "../actions/characters";
 import * as BattlelogActions from "../actions/battlelog";
 import CharacterCard from "../components/CharacterCard";
 import LoadingSpinner from "../components/LoadingSpinner";
+import lodash from "lodash";
 
 const BattlePage = ({
   userStore,
@@ -23,15 +24,15 @@ const BattlePage = ({
 
   let charactersPicked = userStore.charactersPicked;
 
-  let isSelected = Boolean(
-    charactersPicked["A"].character !== null &&
-      charactersPicked["B"].character !== null
-  );
+  let isASelected = Boolean(lodash.get(charactersPicked, "A.character", null));
+  let isBSelected = Boolean(lodash.get(charactersPicked, "B.character", null));
 
   let list = charactersStore.list;
 
-  if (!isSelected && list.length >= 2) {
+  if (list.length >= 2 && !isASelected) {
     pickCharacter("A", list[Math.floor(Math.random() * list.length)]);
+  }
+  if (list.length >= 2 && !isBSelected) {
     pickCharacter("B", list[Math.floor(Math.random() * list.length)]);
   }
 
@@ -46,7 +47,7 @@ const BattlePage = ({
 
   return (
     <div className={css.BattlePage}>
-      {!isSelected ? (
+      {Boolean(!isASelected || !isBSelected) ? (
         <LoadingSpinner />
       ) : (
         <>

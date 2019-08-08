@@ -35,17 +35,27 @@
     opacity: 1;
   }
 
-  > h1,
+  > header,
   > p {
     position: relative;
     z-index: 2;
   }
 
-  > h1 {
-    margin: 0;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    font-weight: 400;
+  > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+
+    > h1 {
+      margin: 0;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      font-weight: 400;
+      text-align: center;
+      flex-shrink: 1;
+      flex-grow: 1;
+    }
   }
 
   > p {
@@ -56,5 +66,36 @@
     overflow: hidden;
     width: 100%;
     align-items: flex-end;
+    font-size: 0.8rem;
+  }
+}
+
+.PickCard {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  outline: 0;
+  flex-shrink: 0;
+  font-weight: 900;
+  border-radius: 50%;
+  transition: 0.2s transform;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:focus,
+  &:active {
+    border: 2px solid #fff;
+  }
+
+  &:first-child {
+    background: #25a3f3;
+    color: #000;
+  }
+
+  &:last-child {
+    background: #a50000;
+    color: #fff;
   }
 }

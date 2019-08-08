@@ -2,16 +2,28 @@ import React, { useEffect } from "react";
 import css from "./CharactersPage.module.scss";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import * as UserActions from "../actions/user";
 import * as CharactersActions from "../actions/characters";
 import CharacterCard from "../components/CharacterCard";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { history } from "../store";
 
-const CharactersPage = ({ charactersStore, fetchCharacterList }) => {
+const CharactersPage = ({
+  charactersStore,
+  fetchCharacterList,
+  pickCharacter
+}) => {
   useEffect(() => {
     if (charactersStore.list.length === 0) {
       fetchCharacterList();
     }
   }, []);
+
+  const handlePickCard = (event, character) => {
+    let slot = event.target.innerText;
+    pickCharacter(slot, character);
+    history.push("/battle");
+  };
 
   return (
     <div className={css.CharactersPage}>
@@ -27,6 +39,7 @@ const CharactersPage = ({ charactersStore, fetchCharacterList }) => {
                   character.thumbnail.extension
                 }`}
                 description={character.description}
+                handlePickCard={event => handlePickCard(event, character)}
                 key={index}
               />
             );
@@ -42,7 +55,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(CharactersActions, dispatch);
+  bindActionCreators({ ...UserActions, ...CharactersActions }, dispatch);
 
 export default connect(
   mapStateToProps,
