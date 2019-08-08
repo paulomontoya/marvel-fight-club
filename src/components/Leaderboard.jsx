@@ -18,20 +18,24 @@ const Leaderboard = ({ list }) => {
 
   return (
     <section className={css.Leaderboard}>
-      <h1>Leaderboard</h1>
-      {rankedList.map((rankItem, index) => {
-        return (
-          <article key={index}>
-            <span>{rankItem.wins}</span>
-            <img
-              src={`${rankItem.character.thumbnail.path}.${
-                rankItem.character.thumbnail.extension
-              }`}
-            />
-            <h1>{rankItem.character.name}</h1>
-          </article>
-        );
-      })}
+      {rankedList.length > 0 && (
+        <>
+          <h1>Leaderboard</h1>
+          {rankedList.map((rankItem, index) => {
+            return (
+              <article key={index}>
+                <span>{rankItem.wins} wins</span>
+                <img
+                  src={`${rankItem.character.thumbnail.path}.${
+                    rankItem.character.thumbnail.extension
+                  }`}
+                />
+                <h1>{rankItem.character.name}</h1>
+              </article>
+            );
+          })}
+        </>
+      )}
     </section>
   );
 };
