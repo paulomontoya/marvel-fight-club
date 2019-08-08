@@ -1,0 +1,21 @@
+@import "./BaseLayout.scss";
+
+.CharactersPage {
+  display: block;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  > h1 {
+    text-align: center;
+  }
+}
+
+.CharactersList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  > article {
+    margin: 10px;
+  }
+}

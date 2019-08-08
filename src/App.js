@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import CharactersPage from "./components/CharactersPage";
+import CharactersPage from "./containers/CharactersPage";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
 import { store, persistor, history } from "./store";
