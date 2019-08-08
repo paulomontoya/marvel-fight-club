@@ -1,0 +1,58 @@
+@import "./BaseLayout.scss";
+
+.BattlePage {
+  display: block;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.BattleWrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: center;
+
+  > article {
+    margin: 10px;
+  }
+}
+
+.FightForm {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin: 15px auto;
+
+  label {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  input {
+    text-align: center;
+    margin: 0 auto 10px auto;
+    max-width: 50px;
+    outline: 0;
+    padding: 6px;
+    border: 1px solid #ccc;
+  }
+  button {
+    width: 100%;
+    background: #eaeaea;
+    color: #2f2f2f;
+    height: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: 0.2s background, 0.2s color;
+    outline: 0;
+
+    &:hover,
+    &:focus {
+      background: #2f2f2f;
+      color: #fff;
+    }
+  }
+}

@@ -8,7 +8,9 @@ import LoadingSpinner from "../components/LoadingSpinner";
 
 const CharactersPage = ({ charactersStore, fetchCharacterList }) => {
   useEffect(() => {
-    fetchCharacterList();
+    if (charactersStore.list.length === 0) {
+      fetchCharacterList();
+    }
   }, []);
 
   return (

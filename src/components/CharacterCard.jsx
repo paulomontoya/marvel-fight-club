@@ -2,20 +2,17 @@ import React, { useState } from "react";
 import css from "./CharacterCard.module.scss";
 import PropTypes from "prop-types";
 import { useSpring, animated } from "react-spring";
-import useMeasure from "../utils/useMeasure";
 
 const CharacterCard = ({ title, image, description }) => {
   const [open, toggle] = useState(false);
-  const [bind, { height }] = useMeasure();
 
   const { size, scale } = useSpring({
-    size: open ? height - 80 : 35,
+    size: open ? 220 : 35,
     scale: open ? 1.04 : 1
   });
 
   return (
     <animated.article
-      {...bind}
       className={css.CharacterCard}
       onMouseMove={() => toggle(true)}
       onMouseLeave={() => toggle(false)}

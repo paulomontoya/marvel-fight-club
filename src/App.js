@@ -6,6 +6,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { store, persistor, history } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
 import Header from "./components/Header";
+import BattlePage from "./containers/BattlePage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Header />
           <Switch>
             <Route path="/" exact={true} component={CharactersPage} />
+            <Route path="/battle" component={BattlePage} />
             <Route
               component={() => <div style={{ textAlign: "center" }}>404!</div>}
             />
